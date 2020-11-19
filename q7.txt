@@ -1,1 +1,71 @@
+Need matrix = Max - Allocated
 
+    A   B   C   D
+P0  2   2   1   1
+P1  2   1   3   1
+P2  0   2   1   3
+P3  0   1   1   2
+P4  2   2   3   3
+
+
+Available vector : (initial state)
+
+    A   B   C   D
+    3   3   2   1
+
+
+P0 is the only process whose needs can be met by the available resources,
+so P0 will be completed first.
+
+After P0 is complete its resources will be freed up, new available vector is :-
+
+Available vector : (P0 complete)
+
+    A   B   C   D
+    5   3   2   2
+
+P3 is the only process whose needs can be met, so P3 is completed next.
+After P3 is complete the new available vector is :-
+
+Available vector : (P0,P3 complete)
+
+    A   B   C   D
+    6   6   3   4
+
+Now the system has enough available resources to satisfy any of the remaining
+processes, we will go in numerical order, so P4 next :-
+
+Available vector : (P0,P3,P4 complete)
+
+    A   B   C   D
+    7   10  6   6
+
+P1 is next :-
+
+Available vector : (P0,P3,P4,P1 complete)
+
+    A   B   C   D
+    10  11  8   7
+
+Finally P2 is completed :-
+
+Available vector : (P0,P3,P4,P1,P2 complete)
+
+    A   B   C   D
+    12  12  8   10
+
+----------------------------------------------------------------------------------------
+
+Conclusion :-
+
+Yes, the system is in a safe state since the processes can be completed with the
+available resources.
+
+One possible order is : P0 -> P3 -> P4 -> P1 -> P2
+
+P0 is completed 1st, and P3 2nd, then the other processes can be completed in any order.
+So there are in total 6 possible orders.
+
+P0 -> P3 -> Pi -> Pj -> Pk
+
+where i,j,k belong to {1, 2, 4} and i!=j, j!=k, k!=i
